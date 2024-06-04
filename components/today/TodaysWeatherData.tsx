@@ -3,9 +3,8 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import DisplayShortTerm from "./DisplayShortTerm";
 
 const TodaysWeatherData = ({ weather }: any) => {
-  console.log(weather.next_12_hours);
-  const temperature = weather.instant.details.air_temperature;
-  const wind = weather.instant.details.wind_speed;
+  const temperature = weather.instant?.details.air_temperature;
+  const wind = weather.instant?.details.wind_speed;
 
   const precipitationAmountOneHour =
     weather.next_1_hours.details.precipitation_amount;
@@ -16,8 +15,8 @@ const TodaysWeatherData = ({ weather }: any) => {
   const symbolCodeSixHours = weather.next_6_hours.summary.symbol_code;
 
   const precipitationAmountTwelveHours =
-    weather.next_12_hours.details.precipitation_amount;
-  const symbolCodeTwelveHours = weather.next_12_hours.summary.symbol_code;
+    weather.next_12_hours.details?.precipitation_amount;
+  const symbolCodeTwelveHours = weather.next_12_hours.summary?.symbol_code;
   return (
     <View style={styles.container}>
       <View style={styles.displayCard}>

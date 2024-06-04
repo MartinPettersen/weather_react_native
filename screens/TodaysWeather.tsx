@@ -1,9 +1,11 @@
+import TodaysWeatherData from '@/components/today/TodaysWeatherData'
 import React from 'react'
 import { View } from 'react-native'
 
-const TodaysWeather = () => {
+const TodaysWeather = ({weatherData}: any) => {
   return (
-    <View>TodaysWeather</View>
+    <TodaysWeatherData weather={weatherData} />
+
   )
 }
 

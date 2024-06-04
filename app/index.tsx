@@ -3,6 +3,12 @@ import { useGetWeatherData } from "@/hooks/useGetWeatherData";
 import { Text, View, StyleSheet } from "react-native";
 import Tabs from "@/components/Tabs";
 
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator()
+
+
 export default function Index() {
   const [loading, error, weatherData] = useGetWeatherData();
   if (weatherData?.length > 0) {

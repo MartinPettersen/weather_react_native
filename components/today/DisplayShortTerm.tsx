@@ -8,11 +8,8 @@ type Props = {
 }
 
 const DisplayShortTerm = ({headline, precipitationAmount, symbolCode}: Props) => {
-    const precipitationAmountLocal = precipitationAmount
-    if (!precipitationAmount) {
-        console.log("undefinded")
-        let precipitationAmountLocal = "?"
-    } 
+    const precipitationAmountLocal = precipitationAmount !== undefined && precipitationAmount !== null ? precipitationAmount : "?";
+    
 
   return (
     <View style={styles.displayCard}>

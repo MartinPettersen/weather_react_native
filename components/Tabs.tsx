@@ -1,6 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import TodaysWeatherData from "./today/TodaysWeatherData";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import TodaysWeather from "@/screens/TodaysWeather";
+import TomorrowsWeather from "@/screens/TomorrowsWeather";
+import WeekWeather from "@/screens/WeekWeather";
+import { Feather } from "@expo/vector-icons";
+
+const Tab = createBottomTabNavigator();
 
 const Tabs = ({ weatherData }: any) => {
   const today = new Date();
@@ -29,10 +37,66 @@ const Tabs = ({ weatherData }: any) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Tabs</Text>
-      <TodaysWeatherData weather={weatherDataToday} />
-    </View>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: "orange",
+        tabBarInactiveTintColor: "pink",
+        tabBarStyle: {
+          backgroundColor: "#262626",
+        },
+        headerStyle: {
+          backgroundColor: "#262626",
+        },
+        headerTitleStyle: {
+          fontWeight: "bold",
+          fontSize: 25,
+          color: "orange",
+        },
+      }}
+    >
+      <Tab.Screen
+        name={"Dagens"}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Feather
+              name={"droplet"}
+              size={25}
+              color={focused ? "orange" : "pink"}
+            />
+          ),
+        }}
+      >
+        {() => <TodaysWeather weatherData={weatherDataToday} />}
+      </Tab.Screen>
+      <Tab.Screen
+        name={"Imorgen"}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Feather
+              name={"arrow-right"}
+              size={25}
+              color={focused ? "orange" : "pink"}
+            />
+          ),
+        }}
+      >
+        {() => <TomorrowsWeather weatherData={weatherDataToday} />}
+      </Tab.Screen>
+      <Tab.Screen
+        name={"Uken"}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Feather
+              name={"calendar"}
+              size={25}
+              color={focused ? "orange" : "pink"}
+            />
+          ),
+        }}
+      >
+        {() => <WeekWeather weatherData={weatherDataToday} />}
+      </Tab.Screen>
+    </Tab.Navigator>
   );
 };
 
