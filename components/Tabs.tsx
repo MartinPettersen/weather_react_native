@@ -18,23 +18,28 @@ const Tabs = ({ weatherData }: any) => {
 
   //console.log(weatherData[0].time)
 
-  const weatherTime = weatherData[0].time.slice(0, 10);
+  // const weatherTime = weatherData[0].time.slice(0, 10);
   const tommorow = isoFormatNextDay.slice(0, 10);
   const todayFormated = today.toISOString().slice(0, 10);
 
-  console.log(weatherData[0].data);
+  //console.log(weatherData[0].data);
   const weatherDataToday = weatherData[0].data;
-  /*
-    for ( let i = 0; i < weatherData.length; i++) {
 
-      
-      const time = weatherData[i].time.slice(0, 10)
+    const tomorrowsWeatherData: any = []
 
+  for (let i = 0; i < weatherData.length; i++) {
+    const time = weatherData[i].time.slice(0, 10);
+
+    if (time == tommorow) {
+      //console.log(`${time} | ${tommorow}`);
+      //console.log(weatherData[i])
+      tomorrowsWeatherData.push(weatherData[i])
     }
-    */
-  if (weatherTime == tommorow) {
-    console.log(`${weatherTime} | ${tommorow}`);
   }
+
+  //if (weatherTime == tommorow) {
+  //  console.log(`${weatherTime} | ${tommorow}`);
+  //}
 
   return (
     <Tab.Navigator
@@ -80,7 +85,7 @@ const Tabs = ({ weatherData }: any) => {
           ),
         }}
       >
-        {() => <TomorrowsWeather weatherData={weatherDataToday} />}
+        {() => <TomorrowsWeather weatherData={tomorrowsWeatherData} />}
       </Tab.Screen>
       <Tab.Screen
         name={"Uken"}
