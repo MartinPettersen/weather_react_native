@@ -11,9 +11,22 @@ export const useGetWeatherData = () => {
 
     const fetchWeatherData = async () => {
         try {
-            const res = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${process.env.expo_WEATHER_API_KEY}&units=metric`)
+
+            const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lng}`
+            const options = {
+                headers: {
+                  "User-Agent": `weather app practice, email: ${process.env.CONTACT_INFO}`,
+                },
+              };
+
+            //const res = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${process.env.expo_WEATHER_API_KEY}&units=metric`)
+            const res = await fetch(url, options);
+            
             const data = await res.json()
-            setWeatherData(data)
+            // console.log("res")
+            
+            // console.log(data.properties.timeseries)
+            setWeatherData(data.properties.timeseries)
         }
         catch (error) {
             setError("error could not fetch Data")
