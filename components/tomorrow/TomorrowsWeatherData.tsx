@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import HourCard from "./HourCard";
 
 const TomorrowsWeatherData = ({ weather }: any) => {
-    //console.log(weather[0].time.slice(11,13))
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>

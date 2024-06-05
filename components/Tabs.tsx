@@ -16,30 +16,20 @@ const Tabs = ({ weatherData }: any) => {
   nextDay.setDate(today.getDate() + 1);
   const isoFormatNextDay = nextDay.toISOString();
 
-  //console.log(weatherData[0].time)
-
-  // const weatherTime = weatherData[0].time.slice(0, 10);
   const tommorow = isoFormatNextDay.slice(0, 10);
   const todayFormated = today.toISOString().slice(0, 10);
 
-  //console.log(weatherData[0].data);
   const weatherDataToday = weatherData[0].data;
 
-    const tomorrowsWeatherData: any = []
+  const tomorrowsWeatherData: any = [];
 
   for (let i = 0; i < weatherData.length; i++) {
     const time = weatherData[i].time.slice(0, 10);
 
     if (time == tommorow) {
-      //console.log(`${time} | ${tommorow}`);
-      //console.log(weatherData[i])
-      tomorrowsWeatherData.push(weatherData[i])
+      tomorrowsWeatherData.push(weatherData[i]);
     }
   }
-
-  //if (weatherTime == tommorow) {
-  //  console.log(`${weatherTime} | ${tommorow}`);
-  //}
 
   return (
     <Tab.Navigator

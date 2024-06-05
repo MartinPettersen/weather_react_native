@@ -10,10 +10,8 @@ const Tab = createBottomTabNavigator()
 
 
 export default function Index() {
-  const [loading, error, weatherData] = useGetWeatherData();
-  console.log(weatherData.length)
+  const [ weatherData] = useGetWeatherData();
   if (weatherData?.length > 0) {
-    console.log("look at that length")
     return <Tabs weatherData={weatherData} />;
   }
 

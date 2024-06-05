@@ -3,32 +3,15 @@ import { View, StyleSheet, Text, ScrollView } from "react-native";
 import WeekDay from "./WeekDay";
 
 const WeekWeatherData = ({ weather }: any) => {
-   //console.log(weather);
-
-  //const [nextSevenDays, setNexTSevenDays] = useState<string[]>([]);
   const nextSevenDays = [];
 
-//  const getNextSevenDays = () => {
     const today = new Date();
     for (let i = 1; i < 8; i++) {
-        //console.log(i)
       const nextDay = new Date(today);
       nextDay.setDate(today.getDate() + i);
       const isoFormatNextDay = nextDay.toISOString();
       nextSevenDays.push(isoFormatNextDay);
     }
-    //console.log(nextSevenDays)
-  //};
-  //useEffect(() => {
-  //  getNextSevenDays();
-  //}, []);
-
-  /*
-  {nextSevenDays.map((day:any, index:number) => (
-            <WeekDay weather={weather} weekday={day} />
-
-        ))}
-        */
 
   return (
     <View style={styles.container}>

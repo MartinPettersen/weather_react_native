@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 const HourCard = ({ weather }: any) => {
-  //console.log(weather);
   const temperature = weather.data.instant?.details.air_temperature;
   const wind = weather.data.instant?.details.wind_speed;
   const precipitationAmount =
