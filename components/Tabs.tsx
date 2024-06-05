@@ -45,7 +45,7 @@ const Tabs = ({ weatherData }: any) => {
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "orange",
-        tabBarInactiveTintColor: "pink",
+        tabBarInactiveTintColor: "lightgrey",
         tabBarStyle: {
           backgroundColor: "#262626",
         },
@@ -66,7 +66,7 @@ const Tabs = ({ weatherData }: any) => {
             <Feather
               name={"droplet"}
               size={25}
-              color={focused ? "orange" : "pink"}
+              color={focused ? "orange" : "lightgrey"}
             />
           ),
         }}
@@ -80,7 +80,7 @@ const Tabs = ({ weatherData }: any) => {
             <Feather
               name={"arrow-right"}
               size={25}
-              color={focused ? "orange" : "pink"}
+              color={focused ? "orange" : "lightgrey"}
             />
           ),
         }}
@@ -94,12 +94,12 @@ const Tabs = ({ weatherData }: any) => {
             <Feather
               name={"calendar"}
               size={25}
-              color={focused ? "orange" : "pink"}
+              color={focused ? "orange" : "lightgrey"}
             />
           ),
         }}
       >
-        {() => <WeekWeather weatherData={weatherDataToday} />}
+        {() => <WeekWeather weatherData={weatherData} />}
       </Tab.Screen>
     </Tab.Navigator>
   );
