@@ -94,7 +94,6 @@ const WeekDay = ({ weekday, weather }: Props) => {
         }
       } else {
         console.log("missing data");
-        console.log(JSON.stringify(weather[i], null, 2));
       }
       tomorrowsWeatherData.push(weather[i]);
     }
