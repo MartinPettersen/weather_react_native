@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useGetWeatherData } from "@/hooks/useGetWeatherData";
-import { Text, View, StyleSheet } from "react-native";
+import {ActivityIndicator, Text, View, StyleSheet } from "react-native";
 import Tabs from "@/components/Tabs";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -18,6 +18,7 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Ser ut vinduet</Text>
+      <ActivityIndicator size={"large"} color={"orange"} />
     </View>
   );
 }
