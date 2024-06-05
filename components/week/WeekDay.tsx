@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
+import Day from "./Day";
 
 type Props = {
   weekday: string;
@@ -157,42 +158,12 @@ const WeekDay = ({ weekday, weather }: Props) => {
   return (
     <View style={styles.container}>
       <Text
-        style={styles.text}
+        style={styles.headline}
       >{`${weekday.slice(8, 10)}.${weekday.slice(5, 7)}.${weekday.slice(0, 4)}`}</Text>
-      <View style={styles.displayCard}>
-        <Text style={styles.text}>Morgen: 00-08</Text>
-        <Text
-          style={styles.text}
-        >{`Gjennomsnitts Temperatur: ${Math.round(morningData.totalTemp / morningData.temperatures.length)} grader`}</Text>
-        <Text
-          style={styles.text}
-        >{`nedbør: ${morningData.totalDownpour}`}</Text>
-      </View>
-      <View style={styles.displayCard}>
-        <Text style={styles.text}>Formidag: 08-12</Text>
-        <Text
-          style={styles.text}
-        >{`Gjennomsnitts Temperatur: ${Math.round(midDayData.totalTemp / midDayData.temperatures.length)} grader`}</Text>
-        <Text style={styles.text}>{`nedbør: ${midDayData.totalDownpour}`}</Text>
-      </View>
-      <View style={styles.displayCard}>
-        <Text style={styles.text}>ettermidag: 12-18</Text>
-        <Text
-          style={styles.text}
-        >{`Gjennomsnitts Temperatur: ${Math.round(afternoonData.totalTemp / afternoonData.temperatures.length)} grader`}</Text>
-        <Text
-          style={styles.text}
-        >{`nedbør: ${afternoonData.totalDownpour}`}</Text>
-      </View>
-      <View style={styles.displayCard}>
-        <Text style={styles.text}>Kveld: 18-24</Text>
-        <Text
-          style={styles.text}
-        >{`Gjennomsnitts Temperatur: ${Math.round(eveningData.totalTemp / eveningData.temperatures.length)} grader`}</Text>
-        <Text
-          style={styles.text}
-        >{`nedbør: ${eveningData.totalDownpour}`}</Text>
-      </View>
+      <Day headline="Morgen: 00-08" average={Math.round(morningData.totalTemp / morningData.temperatures.length)} downpour={morningData.totalDownpour} />
+      <Day headline="Formidag: 08-12" average={Math.round(midDayData.totalTemp / midDayData.temperatures.length)} downpour={midDayData.totalDownpour} />
+      <Day headline="Ettermidag: 12-18" average={Math.round(afternoonData.totalTemp / afternoonData.temperatures.length)} downpour={afternoonData.totalDownpour} />
+      <Day headline="Kveld: 18-24" average={Math.round(eveningData.totalTemp / eveningData.temperatures.length)} downpour={eveningData.totalDownpour} />
     </View>
   );
 };
@@ -202,8 +173,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "black",
+    backgroundColor: "#27272a",
+    borderRadius: 25,
     flexDirection: "column",
+    margin: 10,
+    padding: 4,
   },
   text: {
     color: "white",
@@ -211,7 +185,7 @@ const styles = StyleSheet.create({
   },
   headline: {
     color: "orange",
-    fontSize: 70,
+    fontSize: 40,
     justifyContent: "center",
     alignItems: "center",
   },

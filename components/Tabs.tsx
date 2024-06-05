@@ -64,7 +64,7 @@ const Tabs = ({ weatherData }: any) => {
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
-              name={"droplet"}
+              name={"umbrella"}
               size={25}
               color={focused ? "orange" : "lightgrey"}
             />

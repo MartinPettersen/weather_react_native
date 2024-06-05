@@ -23,15 +23,17 @@ export const useGetWeatherData = () => {
             const res = await fetch(url, options);
             
             const data = await res.json()
-            // console.log("res")
+            console.log("res")
             
             // console.log(data.properties.timeseries)
             setWeatherData(data.properties.timeseries)
+            console.log(weatherData)
         }
         catch (error) {
             setError("error could not fetch Data")
         }
         finally {
+            console.log("we are done")
             setLoading(false)
 
         }
@@ -47,7 +49,7 @@ export const useGetWeatherData = () => {
             let location = await Location.getCurrentPositionAsync({})
             setLat(location.coords.latitude)
             setLng(location.coords.longitude)
-
+            console.log("")
             await fetchWeatherData()
         })()
     }, [lat, lng])
