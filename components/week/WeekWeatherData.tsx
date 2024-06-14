@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "black",
     flexDirection: "row",
   },
   text: {

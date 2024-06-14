@@ -25,13 +25,6 @@ const HourCard = ({ weather }: any) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "black",
-    flexDirection: "row",
-  },
   text: {
     color: "white",
     fontSize: 20,

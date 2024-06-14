@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import Day from "./Day";
+import { BlurView } from 'expo-blur'; 
 
 type Props = {
   weekday: string;
@@ -100,7 +101,8 @@ const WeekDay = ({ weekday, weather }: Props) => {
   }
 
   return (
-    <View style={styles.container}>
+    <BlurView intensity={70} style={styles.container}>
+
       <Text
         style={styles.headline}
       >{`${weekday.slice(8, 10)}.${weekday.slice(5, 7)}.${weekday.slice(0, 4)}`}</Text>
@@ -108,30 +110,14 @@ const WeekDay = ({ weekday, weather }: Props) => {
       <Day headline="Formidag: 08-12" average={Math.round(midDayData.totalTemp / midDayData.temperatures.length)} downpour={midDayData.totalDownpour} />
       <Day headline="Ettermidag: 12-18" average={Math.round(afternoonData.totalTemp / afternoonData.temperatures.length)} downpour={afternoonData.totalDownpour} />
       <Day headline="Kveld: 18-24" average={Math.round(eveningData.totalTemp / eveningData.temperatures.length)} downpour={eveningData.totalDownpour} />
-    </View>
+    </BlurView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#27272a",
-    borderRadius: 25,
-    flexDirection: "column",
-    margin: 10,
-    padding: 4,
-  },
   text: {
     color: "white",
     fontSize: 20,
-  },
-  headline: {
-    color: "orange",
-    fontSize: 40,
-    justifyContent: "center",
-    alignItems: "center",
   },
   displayCard: {
     padding: 16,
@@ -141,6 +127,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
 
     flexDirection: "column",
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "white",
+    opacity: 0.5,
+    borderRadius: 25,
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 25,
+    margin: 10,
+    padding: 4,
+    position: "relative",
+    overflow: "hidden",
+  },
+  blurOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: 25,
+  },
+  headline: {
+    color: "orange",
+    fontSize: 40,
+    marginTop: 10,
   },
 });
 

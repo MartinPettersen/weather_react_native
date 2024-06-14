@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions, ImageBackground } from "react-native";
 import TodaysWeatherData from "./today/TodaysWeatherData";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -7,6 +7,8 @@ import TodaysWeather from "@/screens/TodaysWeather";
 import TomorrowsWeather from "@/screens/TomorrowsWeather";
 import WeekWeather from "@/screens/WeekWeather";
 import { Feather } from "@expo/vector-icons";
+
+const { width, height } = Dimensions.get("window");
 
 const Tab = createBottomTabNavigator();
 
@@ -32,6 +34,12 @@ const Tabs = ({ weatherData }: any) => {
   }
 
   return (
+    <ImageBackground
+      source={require('../assets/images/cloudimage1.png')} // You can also use a local image with require
+      style={styles.background}
+    >
+<View style={styles.container}>
+
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "orange",
@@ -92,19 +100,28 @@ const Tabs = ({ weatherData }: any) => {
         {() => <WeekWeather weatherData={weatherData} />}
       </Tab.Screen>
     </Tab.Navigator>
+</View>
+
+    </ImageBackground>
+
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "black",
-  },
+  
   text: {
     color: "white",
     fontSize: 30,
+  },
+  container: {
+    flex: 1,
+    width: width,
+    height: height,
+  },
+  background: {
+    flex: 1,
+    width: width,
+    height: height,
   },
 });
 
