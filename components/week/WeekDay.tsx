@@ -101,7 +101,7 @@ const WeekDay = ({ weekday, weather }: Props) => {
   }
 
   return (
-    <BlurView intensity={70} style={styles.container}>
+    <BlurView intensity={40} style={styles.container}>
 
       <Text
         style={styles.headline}

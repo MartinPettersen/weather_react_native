@@ -1,3 +1,4 @@
+import { BlurView } from "expo-blur";
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
@@ -9,7 +10,7 @@ const HourCard = ({ weather }: any) => {
   const symbolCode = weather.data.next_1_hours.summary.symbol_code;
   const time = weather.time.slice(11, 13);
   return (
-    <View style={styles.displayCard}>
+    <BlurView intensity={40} style={styles.displayCard}>
       <Text style={styles.headline}>{`${time}`}</Text>
       <Image
         source={{
@@ -20,7 +21,7 @@ const HourCard = ({ weather }: any) => {
       <Text style={styles.text}>
         {`temp: ${temperature}\u00B0C \nvind: ${wind}m/s \nnedbør:${precipitationAmount}`}
       </Text>
-    </View>
+    </BlurView>
   );
 };
 
@@ -30,17 +31,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   headline: {
-    color: "orange",
+    color: "white",
     fontSize: 70,
     justifyContent: "center",
     alignItems: "center",
   },
   displayCard: {
-    padding: 16,
+    padding: 4,
     justifyContent: "center",
     alignItems: "center",
-
+    borderRadius: 25,
+    overflow: "hidden",
     flexDirection: "row",
+    margin: 10,
+
   },
 });
 
