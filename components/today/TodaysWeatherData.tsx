@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import DisplayShortTerm from "./DisplayShortTerm";
+import { BlurView } from "expo-blur";
 
 const TodaysWeatherData = ({ weather }: any) => {
   const temperature = weather.instant?.details.air_temperature;
@@ -19,11 +20,11 @@ const TodaysWeatherData = ({ weather }: any) => {
   const symbolCodeTwelveHours = weather.next_12_hours.summary?.symbol_code;
   return (
     <View style={styles.container}>
-      <View style={styles.displayCard}>
+      <BlurView style={styles.displayCard}>
         <Text style={styles.headline}>Været I Dag:</Text>
         <Text style={styles.text}>{`Temperatur: ${temperature}`}</Text>
         <Text style={styles.text}>{`vind: ${wind}`}</Text>
-      </View>
+      </BlurView>
 
       <DisplayShortTerm headline="Om 1 time:" precipitationAmount={precipitationAmountOneHour} symbolCode={symbolCodeOneHour} />
 
@@ -51,7 +52,21 @@ const styles = StyleSheet.create({
   displayCard: {
     padding: 16,
     justifyContent: "center",
+    borderRadius: 25,
+    overflow: "hidden",
+
   },
+  blurContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    borderRadius: 25,
+    margin: 10,
+    padding: 4,
+    position: "relative",
+    overflow: "hidden",
+  }
 });
 
 export default TodaysWeatherData;

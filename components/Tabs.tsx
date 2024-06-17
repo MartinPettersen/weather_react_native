@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  ImageBackground,
+} from "react-native";
 import TodaysWeatherData from "./today/TodaysWeatherData";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -7,6 +13,7 @@ import TodaysWeather from "@/screens/TodaysWeather";
 import TomorrowsWeather from "@/screens/TomorrowsWeather";
 import WeekWeather from "@/screens/WeekWeather";
 import { Feather } from "@expo/vector-icons";
+import { BlurView } from "expo-blur";
 
 const { width, height } = Dimensions.get("window");
 
@@ -35,80 +42,78 @@ const Tabs = ({ weatherData }: any) => {
 
   return (
     <ImageBackground
-      source={require('../assets/images/cloudimage1.png')} // You can also use a local image with require
+      source={require("../assets/images/cloudimage1.png")} // You can also use a local image with require
       style={styles.background}
     >
-<View style={styles.container}>
-
-    <Tab.Navigator
-      screenOptions={{
-        tabBarActiveTintColor: "orange",
-        tabBarInactiveTintColor: "lightgrey",
-        tabBarStyle: {
-          backgroundColor: "#262626",
-        },
-        headerStyle: {
-          backgroundColor: "#262626",
-        },
-        headerTitleStyle: {
-          fontWeight: "bold",
-          fontSize: 25,
-          color: "orange",
-        },
-      }}
-    >
-      <Tab.Screen
-        name={"Dagens"}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Feather
-              name={"umbrella"}
-              size={25}
-              color={focused ? "orange" : "lightgrey"}
-            />
-          ),
-        }}
-      >
-        {() => <TodaysWeather weatherData={weatherDataToday} />}
-      </Tab.Screen>
-      <Tab.Screen
-        name={"Imorgen"}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Feather
-              name={"arrow-right"}
-              size={25}
-              color={focused ? "orange" : "lightgrey"}
-            />
-          ),
-        }}
-      >
-        {() => <TomorrowsWeather weatherData={tomorrowsWeatherData} />}
-      </Tab.Screen>
-      <Tab.Screen
-        name={"Uken"}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Feather
-              name={"calendar"}
-              size={25}
-              color={focused ? "orange" : "lightgrey"}
-            />
-          ),
-        }}
-      >
-        {() => <WeekWeather weatherData={weatherData} />}
-      </Tab.Screen>
-    </Tab.Navigator>
-</View>
-
+      <View style={styles.container}>
+        <BlurView intensity={50} style={StyleSheet.absoluteFill}>
+          <Tab.Navigator
+            screenOptions={{
+              tabBarActiveTintColor: "#38bdf8",
+              tabBarInactiveTintColor: "black",
+              tabBarStyle: {
+                backgroundColor: "white",
+              },
+              headerStyle: {
+                backgroundColor: "transparent",
+              },
+              headerTitleStyle: {
+                fontWeight: "bold",
+                fontSize: 20,
+                color: "black",
+              },
+            }}
+          >
+            <Tab.Screen
+              name={"Dagens"}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Feather
+                    name={"umbrella"}
+                    size={25}
+                    color={focused ? "#38bdf8" : "black"}
+                  />
+                ),
+              }}
+            >
+              {() => <TodaysWeather weatherData={weatherDataToday} />}
+            </Tab.Screen>
+            <Tab.Screen
+              name={"Imorgen"}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Feather
+                    name={"arrow-right"}
+                    size={25}
+                    color={focused ? "#38bdf8" : "black"}
+                  />
+                ),
+              }}
+            >
+              {() => <TomorrowsWeather weatherData={tomorrowsWeatherData} />}
+            </Tab.Screen>
+            <Tab.Screen
+              name={"Uken"}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <Feather
+                    name={"calendar"}
+                    size={25}
+                    color={focused ? "#38bdf8" : "black"}
+                  />
+                ),
+              }}
+            >
+              {() => <WeekWeather weatherData={weatherData} />}
+            </Tab.Screen>
+          </Tab.Navigator>
+        </BlurView>
+      </View>
     </ImageBackground>
-
   );
 };
 
 const styles = StyleSheet.create({
-  
   text: {
     color: "white",
     fontSize: 30,

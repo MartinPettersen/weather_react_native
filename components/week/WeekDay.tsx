@@ -128,12 +128,6 @@ const styles = StyleSheet.create({
 
     flexDirection: "column",
   },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "white",
-    opacity: 0.5,
-    borderRadius: 25,
-  },
   container: {
     flex: 1,
     justifyContent: "center",

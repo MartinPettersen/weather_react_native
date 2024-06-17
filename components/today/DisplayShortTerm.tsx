@@ -1,3 +1,4 @@
+import { BlurView } from 'expo-blur'
 import React from 'react'
 import {Image, StyleSheet, View, Text } from 'react-native'
 
@@ -12,6 +13,8 @@ const DisplayShortTerm = ({headline, precipitationAmount, symbolCode}: Props) =>
     
 
   return (
+    <BlurView intensity={40} style={styles.blurContainer}>
+
     <View style={styles.displayCard}>
     <Text style={styles.text}>{headline}</Text>
     <Text
@@ -24,6 +27,8 @@ const DisplayShortTerm = ({headline, precipitationAmount, symbolCode}: Props) =>
       style={{ width: 100, height: 100 }}
     />
   </View>
+  </BlurView>
+
   )
 }
 const styles = StyleSheet.create({
@@ -45,5 +50,16 @@ const styles = StyleSheet.create({
       padding: 16,
       justifyContent: "center",
     },
+    blurContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+      borderRadius: 25,
+      margin: 10,
+      padding: 4,
+      position: "relative",
+      overflow: "hidden",
+    }
   });
 export default DisplayShortTerm
