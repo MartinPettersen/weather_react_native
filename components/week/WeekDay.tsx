@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   headline: {
-    color: "orange",
+    color: "white",
     fontSize: 40,
     marginTop: 10,
   },
