@@ -1,12 +1,21 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import HourCard from "./HourCard";
+import { WeatherByHour } from "@/utils/types";
 
-const TomorrowsWeatherData = ({ weather }: any) => {
+type Props = {
+  weather: WeatherByHour[];
+}
+
+const TomorrowsWeatherData = ({ weather }: Props) => {
+
+  console.log("the weather in TomorrowsWeatherData")
+  console.log(weather)
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
-      {weather.map((weatherItem: any, index: number) => 
+      {weather.map((weatherItem, index: number) => 
         <HourCard weather={weatherItem} key={index} />
     )}
     </ScrollView>

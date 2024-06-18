@@ -40,3 +40,8 @@ export interface WeatherData {
     next_1_hours: Next1Hours;
     next_6_hours: Next6Hours;
 }
+
+export interface WeatherByHour {
+    data: WeatherData;
+    time: string;
+  }

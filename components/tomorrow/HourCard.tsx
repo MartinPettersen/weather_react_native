@@ -12,9 +12,6 @@ type Props = {
 
 const HourCard = ({ weather }: Props) => {
 
-  console.log("the weather in hourcard")
-  console.log(weather)
-
   const temperature = weather.data.instant?.details.air_temperature;
   const wind = weather.data.instant?.details.wind_speed;
   const precipitationAmount =
