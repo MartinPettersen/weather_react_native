@@ -1,11 +1,15 @@
 import WeekWeatherData from "@/components/week/WeekWeatherData";
+import { WeatherByHour } from "@/utils/types";
 import React from "react";
-import { View, Text, Dimensions, StyleSheet, ImageBackground } from "react-native";
+import { Dimensions, StyleSheet, ImageBackground } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 
+type Props = {
+  weatherData: WeatherByHour[]
+}
 
-const WeekWeather = ({ weatherData }: any) => {
+const WeekWeather = ({ weatherData }: Props) => {
   return (
     <ImageBackground
       source={require('../assets/images/cloudimage1.png')} // You can also use a local image with require

@@ -23,6 +23,8 @@ type Props = {
 
 const Tabs = ({ weatherData }: Props) => {
 
+  console.log("weatherdata in Tabs")
+  console.log(weatherData)
 
   const today = new Date();
   const nextDay = new Date(today);
@@ -31,7 +33,7 @@ const Tabs = ({ weatherData }: Props) => {
 
   const tommorow = isoFormatNextDay.slice(0, 10);
 
-  const weatherDataToday = weatherData[0].data;
+  const weatherDataToday = weatherData[0]?.data;
 
   const tomorrowsWeatherData: WeatherByHour[] = [];
 

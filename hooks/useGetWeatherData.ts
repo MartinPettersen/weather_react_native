@@ -27,6 +27,7 @@ export const useGetWeatherData = () => {
         }
         catch (error) {
             setError("error could not fetch Data")
+            console.log(error)
         }
         finally {
             setLoading(false)
