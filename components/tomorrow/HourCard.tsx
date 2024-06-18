@@ -1,8 +1,20 @@
+import { WeatherData } from "@/utils/types";
 import { BlurView } from "expo-blur";
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { Text, StyleSheet, Image } from "react-native";
 
-const HourCard = ({ weather }: any) => {
+type Props = {
+  weather: {
+    data: WeatherData;
+    time: string;
+  };
+}
+
+const HourCard = ({ weather }: Props) => {
+
+  console.log("the weather in hourcard")
+  console.log(weather)
+
   const temperature = weather.data.instant?.details.air_temperature;
   const wind = weather.data.instant?.details.wind_speed;
   const precipitationAmount =
