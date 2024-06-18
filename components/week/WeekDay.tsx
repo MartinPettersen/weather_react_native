@@ -17,8 +17,7 @@ type Props = {
 };
 
 const WeekDay = ({ weekday, weather }: Props) => {
-  console.log("the weather in WeekDay");
-  console.log(weather);
+  
 
   const tomorrowsWeatherData = [];
 

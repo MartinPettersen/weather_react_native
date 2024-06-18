@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as Location from 'expo-location'
 
 
@@ -36,12 +36,12 @@ export const useGetWeatherData = () => {
 
     useEffect(() => {
         (async () => {
-            let { status } = await Location.requestForegroundPermissionsAsync()
+            const { status } = await Location.requestForegroundPermissionsAsync()
             if (status !== 'granted') {
                 setError('permission to access location was denied')
                 return
             }
-            let location = await Location.getCurrentPositionAsync({})
+            const location = await Location.getCurrentPositionAsync({})
             setLat(location.coords.latitude)
             setLng(location.coords.longitude)
             await fetchWeatherData()

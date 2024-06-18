@@ -1,8 +1,15 @@
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import WeekDay from "./WeekDay";
+import { WeatherByHour } from "@/utils/types";
 
-const WeekWeatherData = ({ weather }: any) => {
+type Props = {
+  weather: WeatherByHour[]
+}
+
+const WeekWeatherData = ({ weather }: Props) => {
+
+
   const nextSevenDays = [];
 
     const today = new Date();
@@ -17,7 +24,7 @@ const WeekWeatherData = ({ weather }: any) => {
     <View style={styles.container}>
       {nextSevenDays.length > 0 ? (
       <ScrollView contentContainerStyle={styles.scrollView}>
-        {nextSevenDays.map((day:any, index:number) => (
+        {nextSevenDays.map((day:string, index:number) => (
             <WeekDay key={index} weather={weather} weekday={day} />
             
         ))}

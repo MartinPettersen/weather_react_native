@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useGetWeatherData } from "@/hooks/useGetWeatherData";
 import {ActivityIndicator, Text, View, StyleSheet, ImageBackground, Dimensions } from "react-native";
 import Tabs from "@/components/Tabs";
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const { width, height } = Dimensions.get("window");
 
-const Tab = createBottomTabNavigator()
 
 
 export default function Index() {

@@ -11,23 +11,29 @@ import TomorrowsWeather from "@/screens/TomorrowsWeather";
 import WeekWeather from "@/screens/WeekWeather";
 import { Feather } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
+import { WeatherByHour } from "@/utils/types";
 
 const { width, height } = Dimensions.get("window");
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = ({ weatherData }: any) => {
+type Props = {
+  weatherData: WeatherByHour[]
+}
+
+const Tabs = ({ weatherData }: Props) => {
+
+
   const today = new Date();
   const nextDay = new Date(today);
   nextDay.setDate(today.getDate() + 1);
   const isoFormatNextDay = nextDay.toISOString();
 
   const tommorow = isoFormatNextDay.slice(0, 10);
-  const todayFormated = today.toISOString().slice(0, 10);
 
   const weatherDataToday = weatherData[0].data;
 
-  const tomorrowsWeatherData: any = [];
+  const tomorrowsWeatherData: WeatherByHour[] = [];
 
   for (let i = 0; i < weatherData.length; i++) {
     const time = weatherData[i].time.slice(0, 10);
@@ -36,6 +42,9 @@ const Tabs = ({ weatherData }: any) => {
       tomorrowsWeatherData.push(weatherData[i]);
     }
   }
+
+
+
 
   return (
     <ImageBackground
