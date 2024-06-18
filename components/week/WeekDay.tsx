@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import React from "react";
+import { StyleSheet, Text } from "react-native";
 import Day from "./Day";
 import { BlurView } from 'expo-blur'; 
 

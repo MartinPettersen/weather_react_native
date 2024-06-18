@@ -1,9 +1,60 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import DisplayShortTerm from "./DisplayShortTerm";
 import { BlurView } from "expo-blur";
 
-const TodaysWeatherData = ({ weather }: any) => {
+interface WeatherDetails {
+  air_pressure_at_sea_level: number;
+  air_temperature: number;
+  cloud_area_fraction: number;
+  relative_humidity: number;
+  wind_from_direction: number;
+  wind_speed: number;
+}
+
+interface Next12Hours {
+  details: Record<string, never>;
+  summary: {
+    symbol_code: string;
+  };
+}
+
+interface Next1Hours {
+  details: {
+    precipitation_amount?: number;
+  };
+  summary: {
+    symbol_code: string;
+  };
+}
+
+interface Next6Hours {
+  details: {
+    precipitation_amount?: number;
+  };
+  summary: {
+    symbol_code: string;
+  };
+}
+
+interface WeatherData {
+  instant: {
+    details: WeatherDetails;
+  };
+  next_12_hours: Next12Hours;
+  next_1_hours: Next1Hours;
+  next_6_hours: Next6Hours;
+}
+
+type Props = {
+  weather: WeatherData
+}
+
+const TodaysWeatherData = ({ weather }: Props) => {
+
+  console.log("the weather")
+  console.log(weather)
+
   const temperature = weather.instant?.details.air_temperature;
   const wind = weather.instant?.details.wind_speed;
 
@@ -26,9 +77,9 @@ const TodaysWeatherData = ({ weather }: any) => {
         <Text style={styles.text}>{`vind: ${wind}`}</Text>
       </BlurView>
 
-      <DisplayShortTerm headline="Om 1 time:" precipitationAmount={precipitationAmountOneHour} symbolCode={symbolCodeOneHour} />
+      <DisplayShortTerm headline="Om 1 time:" precipitationAmount={precipitationAmountOneHour?.toString() ?? ""} symbolCode={symbolCodeOneHour} />
 
-      <DisplayShortTerm headline="Om 6 timer:" precipitationAmount={precipitationAmountSixHours} symbolCode={symbolCodeSixHours} />
+      <DisplayShortTerm headline="Om 6 timer:" precipitationAmount={precipitationAmountSixHours?.toString() ?? ""} symbolCode={symbolCodeSixHours} />
 
       <DisplayShortTerm headline="Om 12 timer:" precipitationAmount={precipitationAmountTwelveHours} symbolCode={symbolCodeTwelveHours} />
     </View>
