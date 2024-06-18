@@ -23,9 +23,6 @@ type Props = {
 
 const Tabs = ({ weatherData }: Props) => {
 
-  console.log("weatherdata in Tabs")
-  console.log(weatherData)
-
   const today = new Date();
   const nextDay = new Date(today);
   nextDay.setDate(today.getDate() + 1);

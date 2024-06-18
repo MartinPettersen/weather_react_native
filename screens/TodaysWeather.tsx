@@ -12,9 +12,6 @@ type Props = {
 
 const TodaysWeather = ({weatherData}: Props) => {
 
-  console.log("weatherdata in TodaysWeather")
-  console.log(weatherData)
-
   return (
     <ImageBackground
       source={require('../assets/images/cloudimage1.png')}

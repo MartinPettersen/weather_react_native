@@ -3,8 +3,6 @@ import * as Location from 'expo-location'
 
 
 export const useGetWeatherData = () => {
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<null|string>(null)
     const [weatherData, setWeatherData] = useState([])
     const [lat, setLat] = useState<number|[]>([])
     const [lng, setLng] = useState<number|[]>([])
@@ -26,20 +24,16 @@ export const useGetWeatherData = () => {
             setWeatherData(data.properties.timeseries)
         }
         catch (error) {
-            setError("error could not fetch Data")
             console.log(error)
         }
-        finally {
-            setLoading(false)
 
-        }
     }
 
     useEffect(() => {
         (async () => {
             const { status } = await Location.requestForegroundPermissionsAsync()
             if (status !== 'granted') {
-                setError('permission to access location was denied')
+                console.log('permission to access location was denied')
                 return
             }
             const location = await Location.getCurrentPositionAsync({})
