@@ -1,13 +1,10 @@
 import React from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Dimensions,
   ImageBackground,
 } from "react-native";
-import TodaysWeatherData from "./today/TodaysWeatherData";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TodaysWeather from "@/screens/TodaysWeather";
 import TomorrowsWeather from "@/screens/TomorrowsWeather";

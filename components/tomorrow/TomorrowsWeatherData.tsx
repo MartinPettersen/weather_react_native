@@ -9,9 +9,6 @@ type Props = {
 
 const TomorrowsWeatherData = ({ weather }: Props) => {
 
-  console.log("the weather in TomorrowsWeatherData")
-  console.log(weather)
-
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
