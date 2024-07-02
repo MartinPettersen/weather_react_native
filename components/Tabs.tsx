@@ -47,7 +47,7 @@ const Tabs = ({ weatherData }: Props) => {
 
   return (
     <ImageBackground
-      source={require("../assets/images/cloudimage1.png")} // You can also use a local image with require
+      source={require("../assets/images/cloudimage1.png")}
       style={styles.background}
     >
       <View style={styles.container}>

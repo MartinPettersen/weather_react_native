@@ -13,8 +13,8 @@ const Day = ({headline, average, downpour}: Props) => {
       <Text style={styles.text}>{headline}</Text>
       <Text
         style={styles.text}
-      >{`Gjennomsnitts Temperatur: ${average} grader`}</Text>
-      <Text style={styles.text}>{`nedbør: ${downpour}`}</Text>
+      >{`Gjennomsnittstemperatur: ${average} grader`}</Text>
+      <Text style={styles.text}>{`Nedbør: ${downpour}`}</Text>
     </View>
   );
 };
